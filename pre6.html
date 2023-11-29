@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Set background color to black */
+            color: #fff; /* Set text color to white */
+        }
+        #startButton {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw; /* 100% of viewport width */
+            height: 100vh; /* 100% of viewport height */
+            font-size: 2em; /* Adjust font size as needed */
+            background: transparent; /* Make the button background transparent */
+            border: none;
+            cursor: pointer;
+            z-index: 2; /* Ensure the button is on top */
+        }
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 1; /* Ensure the overlay is below the button and video */
+            backdrop-filter: blur(5px); /* Apply a blur effect to the overlay */
+        }
+        #videoContainer {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        #videoPlayer {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Maintain aspect ratio and cover the container */
+            pointer-events: none; /* Disable pointer events on the video to prevent controls */
+        }
+        #discordText {
+            font-size: 1.5em; /* Adjust font size as needed */
+            color: #fff;
+        }
+        #clickAnywhereText {
+            font-size: 2em; /* Adjust font size as needed */
+            color: #fff;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+
+<button id="startButton" onclick="startSite()">Click to Start</button>
+
+<div id="overlay">
+    <p id="discordText">Discord @ pa_h <br/> Discord:<a href="https://discord.gg/Kgs2Qwb34K" target="_blank">Server</a></p>
+</div>
+
+<div id="videoContainer">
+    <video id="videoPlayer" controls="false" preload="auto" loop muted>
+        <source src="video1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<div id="clickAnywhereText">CLICK ANYWHERE</div>
+
+<script>
+    function startSite() {
+        // Hide the button and click anywhere text
+        document.getElementById('startButton').style.display = 'none';
+        document.getElementById('clickAnywhereText').style.display = 'none';
+
+        // Show the overlay
+        document.getElementById('overlay').style.display = 'flex';
+
+        // Show and play the video
+        var videoContainer = document.getElementById('videoContainer');
+        videoContainer.style.display = 'block';
+
+        var videoPlayer = document.getElementById('videoPlayer');
+        videoPlayer.volume = 0.35; // Set the volume to 35%
+        videoPlayer.play();
+    }
+
+    // Add event listener to the entire document
+    document.addEventListener('click', function() {
+        startSite();
+    });
+</script>
+
+</body>
+</html>
