@@ -141,7 +141,9 @@ body::before {
   background-image: url('tele.png');
   background-size: cover;
 }
-
+.status-container {
+  display: none;
+}
 .tiktok-button {
   background: linear-gradient(to right, rgb(90, 33, 182), #6f14ac);
   color: #ffffff;
